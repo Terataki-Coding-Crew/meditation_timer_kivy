@@ -1,0 +1,157 @@
+#:kivy 2.0.0
+#:import Spinner kivy.uix.spinner
+
+
+<Button>:
+    size_hint: (0.5, 0.5)
+    border: (5,5,5,5)
+    border_color_a: (0,0,0,1)
+
+
+
+<MeditationScreen>:
+    canvas.before:
+        Color:
+            rgba: app.pale
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+
+    FloatLayout:
+        # cols: 1
+        size: root.width, root.height
+        show_hidden: True
+        Label:
+            text: 'Meditation Timer'
+            font: 'Courier'
+            color: app.lilac
+            font_size: 37
+            bold: True
+            size: self.texture_size
+            size_hint_x: 0.3
+            size_hint_y: 0.2
+            pos_hint: {'x': 0.34, 'top': 1}
+
+        Image:
+            source: 'images/ancient.png'
+            # width: root.width
+            # height: 400
+            allow_stretch: True
+            size_hint_y: 0.5
+            size_hint_x: 0.5
+            pos_hint: {'center_x': 0.5, 'top': 0.85}
+
+        Label:
+            id: timer_label
+            text: app.change_label_text()
+            font: 'Courier'
+            color: app.pale
+            border_color_a: (0,0,0,0)
+            font_size: 43
+            bold: True
+            size: self.texture_size
+            size_hint_x: 0.3
+            size_hint_y: 0.2
+            pos_hint: {'center_x': 0.5, 'top': 0.69}
+
+
+        GridLayout:
+#            adaptive_height: True
+#            adaptive_width: True
+#            adaptive_size: True
+            cols:2
+            size_hint: (0.37, 0.03)
+            pos_hint: {'center_x': 0.5, 'top': 0.34}
+            spacing: 70
+
+            MDRaisedButton:
+                md_bg_color: app.lilac
+                text: 'Start'
+                color: app.pale
+                id: start_button
+                background_normal: ''
+                background_color: app.lilac
+                on_press: root.start_timer()
+
+#                padding_x: 50
+
+
+            MDRaisedButton:
+                md_bg_color: app.lilac
+                text: 'Stop'
+                color: app.pale
+                id: stop_button
+#                padding_x: 50
+#                border_color_a: (1,1,1,1,)
+#                border_margin: 2
+                background_normal: ''
+                background_color: app.lilac
+                on_press: root.reset_timer()
+
+        BoxLayout:
+            size_hint: (0.5, 0.1)
+            pos_hint: {'center_x': 0.5, 'top': 0.33}
+
+            Label:
+                text: 'Please select session duration:'
+                font: 'Courier'
+                color: app.lilac
+                font_size: 17
+                bold: True
+                size_hint: (0.5, 0.07)
+                pos_hint: {'center_x': 0.5, 'top': 0.31}
+
+        GridLayout:
+            cols:2
+            size_hint: (0.4, 0.15)
+            pos_hint: {'center_x': 0.5, 'top': 0.23}
+
+            Label:
+                text: 'Ten minutes'
+                font: 'Courier'
+                text_size: self.size
+                color: app.lilac
+                halign: 'left'
+            MDCheckbox:
+                group: "times"
+                on_active: root.get_selection(self, self.active, "10" )
+
+            Label:
+                text: 'Fifteen minutes'
+                font: 'Courier'
+                text_size: self.size
+                color: app.lilac
+                halign: 'left'
+            MDCheckbox:
+                group: "times"
+                on_active: root.get_selection(self, self.active, "15" )
+
+            Label:
+                text: 'Twenty minutes'
+                font: 'Courier'
+                text_size: self.size
+                color: app.lilac
+                halign: 'left'
+            MDCheckbox:
+                group: "times"
+                on_active: root.get_selection(self, self.active, "20" )
+
+            Label:
+                text: 'Thirty minutes'
+                font: 'Courier'
+                text_size: self.size
+                color: app.lilac
+                halign: 'left'
+            MDCheckbox:
+                group: "times"
+                on_active: root.get_selection(self, self.active, "30" )
+
+
+
+
+
+
+
+
+
